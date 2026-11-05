@@ -13,6 +13,7 @@
 ![Pixel 9a で確認](https://img.shields.io/badge/確認端末-Pixel%209a-4285F4)
 ![root 不要](https://img.shields.io/badge/root-不要-FF6A2B)
 ![Shizuku 対応](https://img.shields.io/badge/Shizuku-対応-E5254B)
+![MIT License](https://img.shields.io/badge/license-MIT-8C919E)
 
 </div>
 
@@ -132,6 +133,12 @@ app/src/main/java/com/example/gamemode/
 ```
 
 外部ライブラリは Shizuku の API だけです。UI は AndroidX を使わず、Android 標準の View で組んでいます。
+
+## ライセンス
+
+[MIT License](LICENSE) © 2026 ninjin0802
+
+使っているライブラリ: [Shizuku API](https://github.com/RikkaApps/Shizuku-API)（Apache License 2.0）
 
 ## 免責
 
