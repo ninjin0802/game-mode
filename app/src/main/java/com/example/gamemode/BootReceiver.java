@@ -21,6 +21,9 @@ public class BootReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context c, Intent i) {
+        // 受信口は公開されているので、システムだけが送れる BOOT_COMPLETED 以外は無視する
+        // （他のアプリから呼ばれてワイヤレスデバッグを ON にされるのを防ぐ）
+        if (!Intent.ACTION_BOOT_COMPLETED.equals(i.getAction())) return;
         PendingResult r = goAsync();
         new Thread(() -> {
             try {
