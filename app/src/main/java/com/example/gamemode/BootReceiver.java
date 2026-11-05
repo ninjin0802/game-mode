@@ -29,7 +29,7 @@ public class BootReceiver extends BroadcastReceiver {
             try {
                 Thread.sleep(15000); // 起動直後は Wi-Fi やほかのアプリが落ち着くまで待つ
                 if (shizukuRunning()) {
-                    GameMode.restorePendingHz(c); // 戻しきれていない設定があれば戻す
+                    GameMode.restorePending(c); // 戻しきれていない設定があれば戻す
                     return;
                 }
                 // Shizuku の「ワイヤレスデバッグで開始」がすぐ使えるよう ON にしておく
@@ -57,7 +57,7 @@ public class BootReceiver extends BroadcastReceiver {
         nm.createNotificationChannel(new NotificationChannel(CHANNEL, "Shizuku の起動", NotificationManager.IMPORTANCE_DEFAULT));
         Notification n = new Notification.Builder(c, CHANNEL)
                 .setSmallIcon(R.drawable.ic_stat)
-                .setContentTitle("しめじ（Shizuku）が止まっています")
+                .setContentTitle("しずく（Shizuku）が止まっています")
                 .setContentText("タップして「開始」を押すと、ブースト機能が使えるようになります")
                 .setColor(0xFFFF6A2B)
                 .setAutoCancel(true)

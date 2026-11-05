@@ -97,8 +97,9 @@ adb shell cmd notification allow_dnd $PKG
 
 ### 3. Shizuku（ブーストを使う場合）
 
-[Shizuku](https://shizuku.rikka.app/) をインストールして起動し、設定画面の「しめじ（Shizuku）を接続」から許可します。
-root なしの Shizuku は再起動で止まり、自動では起動できません。再起動後は GameMode が「しめじが止まっています」という通知を出し、ワイヤレスデバッグを ON にしておくので、通知をタップして Shizuku の「開始」を押してください。
+[Shizuku](https://shizuku.rikka.app/) をインストールしてください。初回は設定画面の接続ボタンから Shizuku を開き、「ペアリングを開始」→「ペア設定コードによるデバイスのペア設定」を選びます。Android に表示されたコードを Shizuku の通知に入力してください。ペアリングコードの確認と入力は Android の保護のため端末上で必要です。
+
+ペアリングは初回だけです。root なしの Shizuku は再起動後に停止するため、再起動後は GameMode の通知をタップして Shizuku の「開始」を押してください。ペアリングをやり直す必要はありません。
 
 ## しくみ
 
@@ -127,9 +128,12 @@ STOP ──┬─ 保存しておいた値に戻す
 
 ```
 app/src/main/java/com/example/gamemode/
-├── MainActivity.java   画面（ホーム・ライブラリ・設定・PV）
+├── MainActivity.java   画面（ホーム・ライブラリ・設定）
+├── PvBackground.java   背景の公式 PV（YouTube 埋め込み）とぼかし
+├── GameLibrary.java    登録したゲームの一覧・プレイ時間
 ├── GameMode.java       開始 / 終了と、元に戻す処理
-└── StopReceiver.java   通知の「終了」ボタン
+├── StopReceiver.java   通知の「終了」ボタン
+└── BootReceiver.java   再起動後に Shizuku の起動を案内
 ```
 
 外部ライブラリは Shizuku の API だけです。UI は AndroidX を使わず、Android 標準の View で組んでいます。

@@ -216,14 +216,14 @@ final class GameMode {
         if (opt(c, "killGame")) e.putString("killPending", p.getString("selected", null)); // 終了時にゲームも閉じる
         e.apply();
         nm.cancel(NOTIFY_ID);
-        restorePendingHz(c);
+        restorePending(c);
     }
 
     /**
-     * 120Hz を元に戻す。アプリが起動直後だと Shizuku の接続が届いていないので、届いてから戻す。
-     * 戻せなかったら hzPending が残り、次にアプリを開いたときに再挑戦する。
+     * Shizuku が必要な後片付け（120Hz・ゲーム終了・ブースト）を行う。アプリが起動直後だと Shizuku の
+     * 接続が届いていないので、届いてから行う。できなかった分は prefs に残り、次にアプリを開いたときに再挑戦する。
      */
-    static void restorePendingHz(Context c) {
+    static void restorePending(Context c) {
         SharedPreferences p = prefs(c);
         if (!p.getBoolean("hzPending", false) && p.getString("killPending", null) == null
                 && !(p.contains("boostSaved") && !isActive(c))) return;
