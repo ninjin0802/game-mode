@@ -86,6 +86,7 @@ public class MainActivity extends Activity {
         w.setNavigationBarColor(BG);
         if (!prefs.contains("games")) autoDetectGames();
         GameMode.restorePendingHz(this);
+        if (GameMode.shizukuReady()) getSystemService(NotificationManager.class).cancel(BootReceiver.NOTIFY_ID);
 
         FrameLayout page = new FrameLayout(this);
         page.setBackgroundColor(BG);

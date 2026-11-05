@@ -98,7 +98,7 @@ adb shell cmd notification allow_dnd $PKG
 ### 3. Shizuku（ブーストを使う場合）
 
 [Shizuku](https://shizuku.rikka.app/) をインストールして起動し、設定画面の「しめじ（Shizuku）を接続」から許可します。
-端末を再起動すると Shizuku は止まるので、そのたびに Shizuku アプリから起動し直してください。
+root なしの Shizuku は再起動で止まり、自動では起動できません。再起動後は GameMode が「しめじが止まっています」という通知を出し、ワイヤレスデバッグを ON にしておくので、通知をタップして Shizuku の「開始」を押してください。
 
 ## しくみ
 
